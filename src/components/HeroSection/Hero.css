@@ -1,0 +1,28 @@
+.hero-container{
+    display: flex;
+    flex-direction: column;
+    background-color: beige;
+    height: 50vh;
+}
+.heroContent-container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    padding: 1rem;
+}
+.heroText-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: start;
+    gap: 1rem;
+}
+.image-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.heroText-container button{
+    background-color: #4CAF50;
+    padding: 0.5rem;
+}

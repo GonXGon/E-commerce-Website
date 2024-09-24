@@ -1,0 +1,27 @@
+body { /* Apply to the entire page */
+  font-family: 'Ubuntu', sans-serif; 
+}
+
+h1, h2, h3 { /* Apply to headings */
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.my-custom-class { /* Apply to a specific class */
+  font-family: 'Ubuntu', sans-serif;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Takes up the entire height of the viewport */
+}
+body {
+  margin: 0;
+}
+main {
+  flex: 1; /* This ensures the main content takes up the remaining space between header and footer */
+}
+
+.footers {
+  flex-shrink: 0; /* Prevents the footer from shrinking */
+}
