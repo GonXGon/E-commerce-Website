@@ -1,0 +1,32 @@
+.products-container{
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+.product-card{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+    gap: .5rem;
+    background-color: beige;
+    margin: .5rem;
+    border-radius: .5rem;
+}
+.product-card img{
+    width: 250px;
+    height: 250px;
+    object-fit: cover; 
+    border-radius: .5rem;
+}
+.button-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2rem;
+}
+.product-card button{
+    padding: 1rem;
+    width: 5rem;
+}

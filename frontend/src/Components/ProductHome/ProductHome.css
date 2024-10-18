@@ -1,0 +1,23 @@
+.ProductHome-container{
+    display: flex;
+    flex-direction: column;
+    background-color: rgb(119, 119, 108);
+    padding: 2rem;
+    height: 50vh;
+}
+.headingText-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.productPreview-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+}
+.productPreview-container button{
+    padding: .5rem;
+    width: 10%;
+}

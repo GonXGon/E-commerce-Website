@@ -1,0 +1,30 @@
+.login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem;
+}
+.login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: .5rem;
+    width: 50%;
+}
+.loginbutton-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+.login-form input{
+    padding: .5rem;
+    width: 50%;
+}
+.login-form button{
+    padding: .5rem;
+}
