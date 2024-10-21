@@ -23,7 +23,6 @@ const Login = () => {
                 body: JSON.stringify(user)
             });
             const data = await response.json();
-            console.log(data);
             if(response.ok){
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("user", JSON.stringify({ firstname: data.user.firstname, lastname: data.user.lastname }));
@@ -31,9 +30,9 @@ const Login = () => {
                 setEmail("");
                 setPassword("");
                 navigate('/');
+                console.log()
             }else{
                 alert("Login failed");
-                console.log( email, password);
                 console.log("Login failed:", data);
             }
         }catch(error){
