@@ -33,6 +33,7 @@ const Login = () => {
                 navigate('/');
             }else{
                 alert("Login failed");
+                console.log( email, password);
                 console.log("Login failed:", data);
             }
         }catch(error){
