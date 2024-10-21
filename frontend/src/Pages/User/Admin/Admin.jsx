@@ -32,12 +32,9 @@ const Admin = () => {
         data.append('image', formData.image);
 
         try {
-            const response = await fetch('http://localhost:5000/products', {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}products`, {
                 method: 'POST',
                 body: data,
-                headers: {
-                    // 'Content-Type': 'multipart/form-data' - Not needed for fetch with FormData
-                }
             });
 
             if (!response.ok) {

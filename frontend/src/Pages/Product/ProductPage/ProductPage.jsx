@@ -9,7 +9,7 @@ const ProductPage = () => {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        fetch('http://localhost:5000/products')
+        fetch(`${process.env.REACT_APP_BACKEND_URL}products`)
             .then(response => response.json())
             .then(data => {
                 setProducts(data);
@@ -30,7 +30,7 @@ const ProductPage = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/cart', {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}cart`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -76,7 +76,7 @@ const ProductPage = () => {
             {products.map(product => (
                 <div key={product._id} className="product-card">
                     {product.img && (
-                        <img src={`http://localhost:5000/${product.img}`} alt={product.name} />
+                        <img src={`${process.env.REACT_APP_BACKEND_URL}${product.img}`} alt={product.name} />
                     )}
                     <h2>{product.name}</h2>
                     <p>{product.description}</p>

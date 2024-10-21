@@ -15,7 +15,7 @@ const Login = () => {
                 email,
                 password
             }
-            const response = await fetch("http://localhost:5000/login",{
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}login`,{
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json"
@@ -23,6 +23,7 @@ const Login = () => {
                 body: JSON.stringify(user)
             });
             const data = await response.json();
+            console.log(data);
             if(response.ok){
                 localStorage.setItem("token", data.token);
                 localStorage.setItem("user", JSON.stringify({ firstname: data.user.firstname, lastname: data.user.lastname }));

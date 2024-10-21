@@ -18,7 +18,7 @@ const Cartpage = () => {
         }
 
         try {
-            const response = await fetch(`http://localhost:5000/cart/${productId}`, {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}cart/${productId}`, {
                 method: 'DELETE',
                 headers: { 
                     Authorization: `Bearer ${token}` 
@@ -44,7 +44,7 @@ const Cartpage = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/cart/quantity', {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}cart/quantity`, {
                 method: 'PUT',
                 headers: {
                     'Content-Type': 'application/json',
@@ -77,7 +77,7 @@ const Cartpage = () => {
                 <div className='cart-details-section'>
                     {cartItems.map((item) => (
                         <div key={item.productId} className='details'>
-                            <img src={`http://localhost:5000/${item.img}`} alt={item.name} />
+                            <img src={`${process.env.REACT_APP_BACKEND_URL}${item.img}`} alt={item.name} />
                             <h3>{item.name}</h3>
                             <p>Price: ${item.price}</p>
                             <p>Quantity:{" "}

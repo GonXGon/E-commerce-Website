@@ -12,7 +12,9 @@ const PORT = process.env.PORT || 5000;
 
 //middleware
 app.use(bodyParsser.json());
-app.use(cors());
+app.use(cors({
+  origin: ['http://localhost:3000', 'https://e-commerce-website-gamma-henna.vercel.app/'], // Add both your local and deployed frontend origins
+}));
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 //routes
@@ -21,6 +23,10 @@ app.use('/', userRoute);
 app.use('/', cartRoute);
 
 //connect database
-connectDB().then (() => {
+if (process.env.NODE_ENV !== 'production') {  // Only listen locally, not in Vercel
+  connectDB().then(() => {
     app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
-});
+  });
+}
+
+module.exports = app;

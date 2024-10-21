@@ -3,7 +3,7 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 export const fetchCart = createAsyncThunk('cart/fetchCart', async (_, { getState }) => {
     const token = localStorage.getItem('token');
     try {
-        const response = await fetch('http://localhost:5000/cart', {
+        const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}cart`, {
             method: 'GET',
             headers: {
                 Authorization: `Bearer ${token}`,
