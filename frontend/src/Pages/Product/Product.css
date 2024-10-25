@@ -1,6 +1,7 @@
 .products-container{
     display: grid;
     grid-template-columns: repeat(3, 1fr);
+    background-color: rgb(201, 201, 201);
 }
 .product-card{
     display: flex;

@@ -11,7 +11,10 @@ import Admin from './Pages/User/Admin/Admin';
 import ProductPage from './Pages/Product/ProductPage/ProductPage';
 import Cartpage from './Pages/Cart/Cartpage';
 
+import Checkout from './Pages/Product/Checkout/Checkout';
+
 function App() {
+
   return (
     <Router>
     <div className="App">
@@ -23,7 +26,8 @@ function App() {
           <Route path="/signup" element={<Signup />} />
           <Route path="/login" element={<Login />} />
           <Route path="/cart" element={<Cartpage />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin" element={<Admin />} /> 
+          <Route path="/checkout" element={<Checkout />} />
         </Routes>
       </main>
       <Footer />

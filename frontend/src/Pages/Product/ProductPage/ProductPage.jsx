@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { addtoCart } from '../../../Features/cartSlice';
 import "../Product.css";
 
@@ -7,6 +8,7 @@ const ProductPage = () => {
     const [products, setProducts] = useState([]);
     const [loading, setLoading] = useState(true);
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BACKEND_URL}products`)
@@ -49,8 +51,6 @@ const ProductPage = () => {
                 throw new Error('Error adding product to cart');
             }
 
-            // const result = await response.json();
-
             dispatch(addtoCart({
                 productId: product._id,
                 name: product.name,
@@ -66,6 +66,51 @@ const ProductPage = () => {
             }
         }
     };
+
+    const handleBuyNow = async(product) => {
+        const token = localStorage.getItem('token'); 
+        if (!token) {
+            alert("You need to log in to add items to the cart.");
+            return;
+        }
+
+        try {
+            const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}cart`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    productId: product._id,
+                    name: product.name,
+                    price: product.price,
+                    quantity: 1,
+                    img: product.img 
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Error adding product to cart');
+            }
+
+            dispatch(addtoCart({
+                productId: product._id,
+                name: product.name,
+                price: product.price,
+                quantity: 1,
+                img: product.img 
+            }));
+
+        } catch (error) {
+            console.error("Error adding to cart:", error);
+            if (error.message === 'Unauthorized') {
+                alert("Unauthorized! Please log in again.");
+            }
+        }
+
+        navigate('/checkout');
+    }
 
     if (loading) {
         return <div>Loading...</div>;
@@ -84,8 +129,7 @@ const ProductPage = () => {
                     <p>Category: {product.category}</p>
                     <div className="button-container">
                         <button onClick={() => handleAddToCart(product)}>Add to cart</button>
-                        <button>Buy now</button>
-                        <button>Add to wishlist</button>
+                        <button onClick={() => handleBuyNow(product)}>Buy now</button>
                     </div>
                 </div>
             ))}

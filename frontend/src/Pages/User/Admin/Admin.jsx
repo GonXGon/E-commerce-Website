@@ -1,7 +1,45 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./Admin.css";
 
 const Admin = () => {
+    const [isAdmin, setIsAdmin] = useState(null);
+    const token = localStorage.getItem('token');  
+    const navigate = useNavigate();
+
+    useEffect(() => {
+        const fetchUserData = async () => {
+            try {
+                const response = await fetch(`${process.env.REACT_APP_BACKEND_URL}profile`, {
+                    method: 'GET',
+                    headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json',
+                    },
+                });
+                const data = await response.json();
+
+                // If user is admin, allow access to the page
+                if (response.ok && data.isAdmin) {
+                    setIsAdmin(true);
+                } else {
+                    setIsAdmin(false);  // Redirect non-admin users
+                    navigate('/');
+                }
+            } catch (error) {
+                console.error('Error fetching user data:', error);
+                setIsAdmin(false);  // Redirect on error
+                navigate('/');
+            }
+        };
+
+        if (token) {
+            fetchUserData();  // Fetch user data if token exists
+        } else {
+            navigate('/login');  // Redirect to login if not authenticated
+        }
+    }, [token, navigate]);
+
     const [formData, setFormData] = useState({
         name: '',
         price: '',
@@ -42,7 +80,7 @@ const Admin = () => {
             }
 
             const result = await response.json();
-            // Handle success
+            
             alert('Product added successfully!');
             setFormData({
                 name: '',
@@ -57,6 +95,10 @@ const Admin = () => {
             console.error('Error adding product:', error);
         }
     };
+
+    if (isAdmin === null) {
+        return <div>Loading...</div>;
+    }
 
     return (
         <div className="admin-container">

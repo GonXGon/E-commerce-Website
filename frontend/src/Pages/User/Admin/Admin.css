@@ -3,6 +3,8 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-color: beige;
+    height: 80vh;
 }
 .form-container{
     display: flex;

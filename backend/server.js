@@ -1,10 +1,14 @@
 const express = require('express');
 const bodyParsser = require('body-parser');
 const cors = require('cors');
+
 const connectDB = require("./config/db");
 const productRoute = require("./routes/productRoute");
 const userRoute = require("./routes/userRoute");
 const cartRoute = require("./routes/cartRoute");
+const userAddressRoute = require("./routes/userAddressRoute");
+const profileRoutes = require('./routes/adminRoute');
+
 const path = require('path');
 
 const app = express();
@@ -19,6 +23,8 @@ app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 app.use('/', productRoute);
 app.use('/', userRoute);
 app.use('/', cartRoute);
+app.use('/', userAddressRoute);
+app.use('/', profileRoutes);
 
 //connect database
 connectDB().then (() => {

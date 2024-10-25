@@ -29,7 +29,6 @@ const Cartpage = () => {
                 throw new Error('Error removing product from cart');
             }
 
-            // After the backend removes the item, update the Redux state
             dispatch(removeCart(productId));
         } catch (error) {
             console.error("Error removing from cart:", error);

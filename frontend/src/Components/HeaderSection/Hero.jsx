@@ -1,22 +1,30 @@
 import React from 'react';
 import './Hero.css';
+import img from '../../Assets/heroImage.jpeg';
+import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
-    return(
+    const navigate = useNavigate();
+    const handleClick = () => {
+        navigate('/products');
+    }
+    return (
         <div className="hero-container">
             <div className="heroContent-container">
                 <div className="heroText-container">
-                    <h3>Deal of a product</h3>
-                    <h2>Compelling Headline</h2>
-                    <h3>Detail of product</h3>
-                    <button>Buy Now!!</button>
+                    <h1>PawPlay Toys</h1>
+                    <h2>Unleash the Joy with PawPlay's Best Dog Toys!</h2>
+                    <div className='button-container'>
+                        <button onClick={handleClick}>Buy Now!!</button>
+                        <button >Sign Up</button>
+                    </div>
                 </div>
                 <div className="image-container">
-                    <h1>Image</h1>
+                    <img src={img} alt="hero section" />
                 </div>
             </div>
         </div>
-    )
-}
+    );
+};
 
-export default Hero
+export default Hero;
