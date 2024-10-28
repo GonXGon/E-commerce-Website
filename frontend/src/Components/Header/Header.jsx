@@ -54,26 +54,8 @@ const Header = () => {
             }));
         }
     },[dispatch, token]);
-    //     const storedUser = JSON.parse(localStorage.getItem('user'));
-    //     if(token){
-    //         dispatch(fetchCart());
-    //     }
-    //     if (storedUser && token) {
-    //         dispatch(updateItem({
-    //             id: 3,
-    //             label: `${storedUser.firstname} ${storedUser.lastname}`,
-    //             link: '/profile'
-    //         }));
-    //     } else {
-    //         dispatch(updateItem({
-    //             id: 3,
-    //             label: 'Sign-Up',
-    //             link: '/signup'
-    //         }));
-    //     }
-    // }, [dispatch, token]);
     if (isAdmin === null) {
-        return <div>Loading...</div>;  // While waiting for admin status
+        return <div>Loading...</div>;  
     }
 
 
@@ -103,37 +85,38 @@ const Header = () => {
     };
 
     return (
-        <div className="header-container">
-            <div className="logo-container">
-                <img src={Logo} alt='logo'/>
-            </div>
-            <div className="header-items">
-                {headerItems.map((item, index) => (
-                    <React.Fragment key={index}>
-                        {token && index === 2 ? (  
-                            <div className="user-dropdown">
-                                <Link to="#" className="header-item" onClick={toggleDropdown}>
-                                    {item.label}
-                                </Link>
-                                {isDropdownOpen && (
-                                    <div className="dropdown-menu">
-                                        <button onClick={handleLogout}>Logout</button>
-                                        <button onClick={handleCart}>Cart</button>
-                                        {isAdmin && <button onClick={handleAdmin}>Admin</button>}
-                                        <button >Profile</button>
-                                    </div>
-                                )}
-                            </div>
-                        ) : (
-                            <Link key={index} to={item.link} className="header-item">
-                                {item.label}
-                            </Link>
-                        )}
-                    </React.Fragment>
-                ))}
-            </div>
-        </div>
-    );
+    <header className="header-container">
+      <div className="logo-container">
+        <Link to="/">
+          <img src={Logo} alt='logo' />
+        </Link>
+      </div>
+      <nav className="header-items">
+        {headerItems.map((item, index) => (
+          <React.Fragment key={index}>
+            {token && index === 2 ? (  
+              <div className="user-dropdown">
+                <button onClick={toggleDropdown} className="header-item">
+                  {item.label}
+                </button>
+                {isDropdownOpen && (
+                  <div className="dropdown-menu">
+                    <button onClick={() => { handleCart(); toggleDropdown(); }}>Cart</button>
+                    {isAdmin && <button onClick={() => { handleAdmin(); toggleDropdown(); }}>Admin</button>}
+                    <button onClick={handleLogout}>Logout</button>
+                  </div>
+                )}
+              </div>
+            ) : (
+              <Link to={item.link} className="header-item">
+                {item.label}
+              </Link>
+            )}
+          </React.Fragment>
+        ))}
+      </nav>
+    </header>
+  );
 };
 
 export default Header;

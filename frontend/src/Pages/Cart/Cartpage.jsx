@@ -69,36 +69,40 @@ const Cartpage = () => {
 
     return (
         <div className='cart-section'>
-            <h1>Your Cart</h1>
-            {cartItems.length === 0 ? (
-                <p>Your cart is empty.</p>
-            ) : (
-                <div className='cart-details-section'>
-                    {cartItems.map((item) => (
-                        <div key={item.productId} className='details'>
-                            <img src={`${process.env.REACT_APP_BACKEND_URL}${item.img}`} alt={item.name} />
-                            <h3>{item.name}</h3>
-                            <p>Price: ${item.price}</p>
-                            <p>Quantity:{" "}
-                                <input
-                                    type="number"
-                                    value={item.quantity}
-                                    onChange={(e) =>
-                                        handleQuantityChange(item.productId, Number(e.target.value))
-                                    }
-                                />
-                            </p>
-                            <div className="button-container">
-                                <button onClick={() => handleRemove(item.productId)}>Remove</button>
+            <div className='cart-header'>
+                <h1>Your Cart</h1>
+                {cartItems.length === 0 ? (
+                    <p>Your cart is empty.</p>
+                ) : (
+                    <div className='cart-details-section'>
+                        {cartItems.map((item) => (
+                            <div key={item.productId} className='details'>
+                                <img src={`${process.env.REACT_APP_BACKEND_URL}${item.img}`} alt={item.name} />
+                                <h3>{item.name}</h3>
+                                <p>Price: ${item.price}</p>
+                                <p>Quantity:{" "}
+                                    <input
+                                        type="number"
+                                        value={item.quantity}
+                                        onChange={(e) =>
+                                            handleQuantityChange(item.productId, Number(e.target.value))
+                                        }
+                                    />
+                                </p>
+                                <div className="button-container">
+                                    <button onClick={() => handleRemove(item.productId)}>Remove</button>
+                                </div>
                             </div>
-                        </div>
-                    ))}
-                    <h2>Total Price: ${totalPrice.toFixed(2)}</h2>
-                    <Link to="/checkout">
-                        <button>Proceed to Checkout</button>
-                    </Link>
-                </div>
-            )}
+                        ))}
+                    </div>
+                )}
+            </div>
+            <div className='cart-total-section'>
+                <h2>Total Price: ${totalPrice.toFixed(2)}</h2>
+                <Link to="/checkout">
+                    <button>Proceed to Checkout</button>
+                </Link>
+            </div>
         </div>
     );
 };

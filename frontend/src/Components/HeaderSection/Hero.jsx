@@ -5,8 +5,8 @@ import { useNavigate } from 'react-router-dom';
 
 const Hero = () => {
     const navigate = useNavigate();
-    const handleClick = () => {
-        navigate('/products');
+    const handleClick = (path) => {
+        navigate(path);
     }
     return (
         <div className="hero-container">
@@ -15,8 +15,8 @@ const Hero = () => {
                     <h1>PawPlay Toys</h1>
                     <h2>Unleash the Joy with PawPlay's Best Dog Toys!</h2>
                     <div className='button-container'>
-                        <button onClick={handleClick}>Buy Now!!</button>
-                        <button >Sign Up</button>
+                        <button onClick={() => handleClick('/products')}>Buy Now!!</button>
+                        <button onClick={() => handleClick('/signup')}>Sign Up</button>
                     </div>
                 </div>
                 <div className="image-container">

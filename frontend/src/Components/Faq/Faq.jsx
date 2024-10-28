@@ -56,6 +56,7 @@ const Faq = () => {
           >
             <div className="faq-question">
               {item.question}
+              <span className="faq-icon">{openIndex === index ? '-' : '+'}</span>
             </div>
             {openIndex === index && (
               <div className="faq-answer">

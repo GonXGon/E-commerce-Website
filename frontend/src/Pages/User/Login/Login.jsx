@@ -42,8 +42,8 @@ const Login = () => {
 
     return(
         <div className="login-container">
-            <h1>Log In</h1>
             <form className="login-form" onSubmit={handleSubmit}>
+                <h1>Log In</h1>
                 <label>Email:</label>
                 <input type="email" name="email" value={email} onChange={(e) => setEmail(e.target.value)} required/>
                 <label>Password:</label>
@@ -51,8 +51,8 @@ const Login = () => {
                 <div className='loginbutton-container'>
                     <button type="submit">Log In</button> 
                 </div>
+                <p>Need to Sign Up? <Link to="/signup">Sign Up</Link></p>
             </form>
-            <p>Need to Sign Up? <Link to="/signup">Sign Up</Link></p>
         </div>
     )
 }

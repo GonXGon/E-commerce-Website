@@ -1,10 +1,12 @@
 import React, { useState, useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 import "./ProductHome.css";
 
 const ProductHome = () => {
     const [products, setProducts] = useState([]);
     const [currentIndex, setCurrentIndex] = useState(0);
-
+    const navigate = useNavigate();
+    
     useEffect(() => {
         fetch(`${process.env.REACT_APP_BACKEND_URL}products`)
         .then(response => response.json())
@@ -19,6 +21,10 @@ const ProductHome = () => {
         setCurrentIndex(currentIndex === products.length - 1 ? 0 : currentIndex + 1);
     };
 
+    const handleAddToCart = async (product) => {
+        navigate(`/products`);
+    };
+
     if(!products.length){
         return <div>Loading...</div>;
     }
@@ -27,11 +33,11 @@ const ProductHome = () => {
             <h1>Our Products</h1>
             <div className="productPreview-container">
                 <button className='prev-button' onClick={prevSlide}>&#10094;</button>
-                <div className='productPrevirew-Slide'>
+                <div className='productPreview-Slide'>
                     <img src={`${process.env.REACT_APP_BACKEND_URL}${products[currentIndex].img}`} alt={products[currentIndex].name} />
                     <h3>{products[currentIndex].name}</h3>
                     <p>Price: ${products[currentIndex].price}</p>
-                    <button>Add to Cart</button>
+                    <button onClick={handleAddToCart}>Add to Cart</button>
                 </div>
                 <button className='next-button' onClick={nextSlide}>&#10095;</button>
             </div>

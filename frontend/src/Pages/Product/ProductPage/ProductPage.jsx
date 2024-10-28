@@ -119,7 +119,7 @@ const ProductPage = () => {
     return (
         <div className="products-container">
             {products.map(product => (
-                <div key={product._id} className="product-card">
+                <div key={product._id} className="product-card" onClick={() => navigate(`/project-detail?id=${product._id}`)}>
                     {product.img && (
                         <img src={`${process.env.REACT_APP_BACKEND_URL}${product.img}`} alt={product.name} />
                     )}

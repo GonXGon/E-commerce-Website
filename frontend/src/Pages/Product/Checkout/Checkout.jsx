@@ -214,9 +214,9 @@ const Checkout = () => {
                                                 }
                                             />
                                         </p>
-                                        <div className="button-container">
-                                            <button onClick={() => handleRemove(item.productId)}>Remove</button>
-                                        </div>
+                                    </div>
+                                    <div className="button-container">
+                                        <button onClick={() => handleRemove(item.productId)}>Remove</button>
                                     </div>
                                 </div>
                             ))}

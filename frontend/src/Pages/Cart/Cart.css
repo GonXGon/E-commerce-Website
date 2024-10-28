@@ -3,23 +3,38 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #88ade6 0%, #3dabff 100%);
+}
+.cart-header{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: .5rem;
+    background-color: beige;
+    border-radius: .5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
 }
 .cart-details-section{
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: .5rem;
+    gap: 1rem;
+    border-radius: .5rem;
 }
 .details{
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     justify-content: center;
     align-items: center;
-    gap: 1rem;
+    gap: 2rem;
     border: 2px solid black;
     border-radius: .5rem;
     padding: .5rem;
+    background: linear-gradient(135deg, #ffffff 0%, #3dabff 100%);
 }
 .details img{
     width: 150px;
@@ -32,10 +47,65 @@
     justify-content: center;
     align-items: center;
     grid-column: span 4;
+    animation: fadeInUp 1s ease 0.6s both;
+}
+.details button{
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.details button:hover{
+    background-color: #0056b3;
+    transform: translateY(-3px);
 }
 .cart-details-section input{
-    padding: 1rem;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    width: 5rem;
+    text-align: center;
+    transition: all 0.3s ease;
+    background-color: white;
+    color: #333;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 .cart-details-section button{
     padding: 1rem;
+}
+
+.cart-total-section {
+    background-color: beige;
+    padding: 20px;
+    border-radius: 8px;
+    margin-top: 20px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.cart-total-section h2 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.5rem;
+}
+
+.cart-total-section button {
+    background-color: #007bff;
+    color: white;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.cart-total-section button:hover {
+    background-color: #0056b3;
 }

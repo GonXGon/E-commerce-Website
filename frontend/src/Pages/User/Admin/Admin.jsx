@@ -19,24 +19,23 @@ const Admin = () => {
                 });
                 const data = await response.json();
 
-                // If user is admin, allow access to the page
                 if (response.ok && data.isAdmin) {
                     setIsAdmin(true);
                 } else {
-                    setIsAdmin(false);  // Redirect non-admin users
+                    setIsAdmin(false);  
                     navigate('/');
                 }
             } catch (error) {
                 console.error('Error fetching user data:', error);
-                setIsAdmin(false);  // Redirect on error
+                setIsAdmin(false); 
                 navigate('/');
             }
         };
 
         if (token) {
-            fetchUserData();  // Fetch user data if token exists
+            fetchUserData();  
         } else {
-            navigate('/login');  // Redirect to login if not authenticated
+            navigate('/login'); 
         }
     }, [token, navigate]);
 
@@ -102,8 +101,10 @@ const Admin = () => {
 
     return (
         <div className="admin-container">
-            <h1>Admin Dashboard</h1>
             <form className='form-container' onSubmit={handleSubmit}>
+                <div className="adminheader-container">
+                    <h1>Admin Dashboard</h1>
+                </div>
                 <label>Name</label>
                 <input type="text" name="name" required value={formData.name} onChange={handleChange} />
 

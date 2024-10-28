@@ -1,6 +1,38 @@
-.Home-container{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    padding: 1rem;
-    border: 2px solid blue;
+.Home-container {
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #88ade6 0%, #3dabff 100%);
+}
+
+.heroSection,
+.productHome,
+.faqSection {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem;
+}
+
+.productHome,
+.faqSection {
+    opacity: 0;
+    transform: translateY(50px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.productHome.fade-in,
+.faqSection.fade-in {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    .heroSection,
+    .productHome,
+    .faqSection {
+        padding: 1rem;
+    }
 }

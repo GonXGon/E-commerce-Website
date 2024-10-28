@@ -3,18 +3,72 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background-color: beige;
+    background: linear-gradient(135deg, #88ade6 0%, #3dabff 100%);
     height: 80vh;
 }
 .form-container{
     display: flex;
     flex-direction: column;
+    justify-content: center;
     gap: .5rem;
+    padding: 3rem;
     width: 50%;
+    background: beige;
+    border-radius: .5rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    transition: background-color 0.3s ease, transform 0.3s ease;
+}
+.adminheader-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 .form-container input{
-    padding: .5rem;
+    padding: 0.8rem 1rem;
+    border: 2px solid #e0e0e0;
+    border-radius: 8px;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    width: 100%;
+    box-sizing: border-box;
+    background-color: white;
+}
+.form-container input:focus{
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+}
+.form-container input:hover{
+    border-color: #007bff;
+}
+.form-container input[type="file"]{
+    padding: 0.5rem;
+    border: 2px dashed #e0e0e0;
+    background-color: #f8f9fa;
+    cursor: pointer;
+}
+.form-container input[type="file"]:hover{
+    border-color: #007bff;
+    background-color: #f1f7ff;
+}
+.form-container label{
+    font-weight: 500;
+    color: #444;
+    margin-bottom: 0.3rem;
 }
 .form-container button{
-    padding: .5rem;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    padding: 0.8rem 1.5rem;
+    font-size: 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+.form-container button:hover{
+    background-color: #0056b3;
+    transform: translateY(-3px);
 }
