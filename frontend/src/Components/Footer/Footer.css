@@ -78,18 +78,37 @@
     .footer-container {
         flex-direction: column;
         align-items: center;
+        padding: 1rem;
+        gap: 2rem;
     }
 
     .headline-container,
     .social-container,
     .footer-items {
         width: 100%;
-        margin-bottom: 2rem;
+        margin-bottom: 0;
         align-items: center;
         text-align: center;
     }
 
     .social-container ul {
-        justify-content: center;
+        grid-template-columns: repeat(1, 1fr);
+        width: 100%;
+        justify-items: center;
+        gap: 1rem;
+    }
+
+    .logo-container img {
+        width: 32px;
+        height: 32px;
+    }
+
+    .footer-container li {
+        margin-bottom: 1rem;
+    }
+
+    .footer-container a {
+        padding: 0.5rem 0;
+        display: inline-block;
     }
 }

@@ -22,6 +22,7 @@
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.3s ease;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  width: 100%;
 }
 .checkout-content button:hover{
   background-color: #0056b3;
@@ -30,7 +31,7 @@
 
 
 .checkout-container {
-  width: 60%;
+  width: 50%;
   padding: 3rem;
   border-radius: 2rem;
   background-color: beige;
@@ -121,4 +122,91 @@
 .cart-item p {
   font-size: 14px;
   margin: 2px 0;
+}
+
+@media (max-width: 768px) {
+    .checkout {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      height: auto;
+    }
+
+    .checkout-content {
+      flex-direction: column-reverse;
+      gap: 1.5rem;
+      width: 100%;
+      padding: 1rem;
+      margin-right: 2rem;
+    }
+
+    .checkout-container {
+      width: 85%;     
+      padding: 2.5rem;
+      border-radius: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .form-group input {
+      padding: 0.75rem;
+      font-size: 1rem;
+      width: 89%;
+    }
+    .checkout-form button{
+      width: 98%;
+    }
+
+    .cart-container {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 90%;      
+      border-radius: 1rem;
+    }
+
+    .cart-items {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      align-items: center;
+      width: 80%;
+    }
+
+    .cart-item {
+      display: flex;
+      flex-direction: column;
+      padding: 1rem;
+      align-items: center;
+      width: 100%;
+    }
+
+    .cart-item img {
+      width: 100px;
+      height: 100px;
+    }
+
+    .cart-item h3 {
+      font-size: 1rem;
+    }
+
+    
+    .cart-item input {
+      padding: 0.8rem 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s ease;
+      box-sizing: border-box;
+      background-color: white;
+    }
+
+    .cart-item p {
+      font-size: 0.875rem;
+    }
 }

@@ -9,7 +9,6 @@ const userAddressSchema = new Schema({
     email: {
         type: String,
         required: true,
-        unique: true,
         lowercase: true,
     },
     address: {
